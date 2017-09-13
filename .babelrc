@@ -1,0 +1,5 @@
+{
+  "presets": ["es2015", "stage-3"]
+}
+
+// async/await是stage-3里的
