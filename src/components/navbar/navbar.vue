@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { stopBubble } from '../../util/util';
+import { bus, stopBubble } from '../../util/util';
 
 export default {
     data() {
@@ -39,6 +39,7 @@ export default {
         sbh() {
             this.slideBarHeight = window.innerHeight - this.$refs.header.clientHeight;
             this.ww = window.innerWidth;
+            bus.$emit('otherH', this.slideBarHeight);
         }
     },
     mounted() {
