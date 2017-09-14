@@ -1,11 +1,11 @@
 <template lang="html">
-    <div id="header">
+    <div id="header" ref='header'>
         <div class="container">
             <i id="setBtn" @click="setBtn">&#xe900;</i>
             <img src="../../assets/logo.png" alt="bbblog">
-            <div :class="['links', { linkShow: show }]">
-                <ul>
-                    <li v-for="link of links"><router-link :to="{ name: '', params: {} }">{{link.name}}</router-link></li>
+            <div :class="['links', { linkShow: show }]" @click="setBtn" :style="ww < 980 ? `height: ${slideBarHeight}px` : ''">
+                <ul @click="stop">
+                    <li v-for="link of links" @click="setBtn"><router-link :to="{ name: '', params: {} }">{{link.name}}</router-link></li>
                 </ul>
             </div>
         </div>
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { stopBubble } from '../../util/util';
+
 export default {
     data() {
         return {
@@ -22,13 +24,26 @@ export default {
                 { name: '注册', src: '' },
                 { name: '登录', src: '' }
             ],
-            show: false
+            show: false,
+            slideBarHeight: 'auto',
+            ww: ''
         };
     },
     methods: {
         setBtn() {
             this.show = !this.show;
+        },
+        stop() {
+            stopBubble();
+        },
+        sbh() {
+            this.slideBarHeight = window.innerHeight - this.$refs.header.clientHeight;
+            this.ww = window.innerWidth;
         }
+    },
+    mounted() {
+        this.sbh();
+        window.onresize = () => this.sbh();
     }
 };
 </script>
