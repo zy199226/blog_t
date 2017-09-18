@@ -1,17 +1,23 @@
 <template lang="html">
     <Mains>
-        <Panel slot="panel"></Panel>
+        <Topics slot="main"></Topics>
+        <Topics slot="main"></Topics>
+        <Topics slot="main"></Topics>
+        <Topics slot="main"></Topics>
+        <Topics slot="main"></Topics>
+        <Topics slot="main"></Topics>
+        <Topics slot="main"></Topics>
     </Mains>
 </template>
 
 <script>
 import Mains from '../components/main/main.vue';
-import Panel from '../components/panel/panel.vue';
+import Topics from '../components/topics/topics.vue';
 
 export default {
     components: {
         Mains,
-        Panel
+        Topics
     }
 };
 </script>

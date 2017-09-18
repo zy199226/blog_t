@@ -14,6 +14,11 @@ import { bus } from '../../util/util';
 export default {
     mounted() {
         bus.$emit('footerH', this.$refs.footer.clientHeight);
+    },
+    watch: {
+        $route() {
+            bus.$emit('footerH', this.$refs.footer.clientHeight);
+        }
     }
 };
 </script>

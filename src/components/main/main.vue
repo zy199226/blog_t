@@ -1,7 +1,7 @@
 <template lang="html">
     <div id="main">
-        <div id="mainBox" :style="ww < 980 ? `height:${mh}px` : `min-height: ${mh}px`">
-            <slot name="panel" />
+        <div id="mainBox" :style="ww">
+            <slot name="main" />
         </div>
     </div>
 </template>
@@ -21,7 +21,7 @@ export default {
 
         }
     },
-    beforeMount() {
+    beforeCreate() {
         bus.$on('otherH', (oh) => {
             this.oh = oh;
         });
@@ -37,7 +37,7 @@ export default {
             return this.oh - this.fh;
         },
         ww() {
-            return window.innerWidth;
+            return window.innerWidth < 980 ? `height:${this.mh}px` : `min-height: ${this.mh}px`;
         }
     }
 };

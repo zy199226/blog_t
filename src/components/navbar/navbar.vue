@@ -5,7 +5,7 @@
             <img src="../../assets/logo.png" alt="bbblog">
             <div :class="['links', { linkShow: show }]" @click="setBtn" :style="ww < 980 ? `height: ${slideBarHeight}px` : ''">
                 <ul @click="stop">
-                    <li v-for="link of links" @click="setBtn"><router-link :to="{ name: '', params: {} }">{{link.name}}</router-link></li>
+                    <li v-for="link of links" @click="setBtn"><router-link :to="link.src">{{link.name}}</router-link></li>
                 </ul>
             </div>
         </div>
@@ -19,9 +19,9 @@ export default {
     data() {
         return {
             links: [
-                { name: '首页', src: '' },
+                { name: '首页', src: '/' },
                 { name: '发布话题', src: '' },
-                { name: '注册', src: '' },
+                { name: '注册', src: '/register' },
                 { name: '登录', src: '' }
             ],
             show: false,
@@ -45,6 +45,11 @@ export default {
     mounted() {
         this.sbh();
         window.onresize = () => this.sbh();
+    },
+    watch: {
+        $route() {
+            bus.$emit('otherH', this.slideBarHeight);
+        }
     }
 };
 </script>
