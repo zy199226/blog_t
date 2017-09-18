@@ -16,11 +16,6 @@ export default {
             fh: 0
         };
     },
-    methods: {
-        mainH() {
-
-        }
-    },
     beforeCreate() {
         bus.$on('otherH', (oh) => {
             this.oh = oh;
