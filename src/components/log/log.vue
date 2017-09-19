@@ -1,9 +1,8 @@
 <template lang="html">
-    <ul id="reg">
+    <ul id="log">
         <li><input type="text" name="username" placeholder="账号"></li>
         <li><input type="password" name="password" placeholder="密码"></li>
-        <li><input type="password" name="password" placeholder="确认密码"></li>
-        <li><button>注册</button></li>
+        <li><button>登录</button></li>
     </ul>
 </template>
 
@@ -13,5 +12,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "./reg.less";
+@import "./log.less";
 </style>

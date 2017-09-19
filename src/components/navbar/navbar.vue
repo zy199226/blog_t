@@ -22,7 +22,7 @@ export default {
                 { name: '首页', src: '/' },
                 { name: '发布话题', src: '' },
                 { name: '注册', src: '/register' },
-                { name: '登录', src: '' }
+                { name: '登录', src: '/login' }
             ],
             show: false,
             slideBarHeight: 'auto',
