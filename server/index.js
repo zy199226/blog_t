@@ -2,10 +2,9 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const server = require('./server');
 const router = require('./router');
-const requestHandlers = require('./requestHandlers');
 
 const handle = {};
-handle['/'] = requestHandlers.start;
+handle['/register'] = require('./requestHandlers/reg').reg;
 
 
 if (cluster.isMaster) {
