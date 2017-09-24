@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import homePage from '../containers/homePage.vue';
 import register from '../containers/register.vue';
 import login from '../containers/login.vue';
+import create from '../containers/create.vue';
 
 Vue.use(Router);
 
@@ -17,6 +18,9 @@ export default new Router({
         }, {
             path: '/login',
             component: login
+        }, {
+            path: '/create',
+            component: create
         }
     ]
 });

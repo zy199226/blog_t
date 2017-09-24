@@ -39,10 +39,19 @@
                 transition: all .4s ease-in-out;
                 overflow: auto;
                 li{
+                    color: #fff;
                     a{
                         display: block;
                         text-decoration: none;
                         color: #fff;
+                    }
+                    button{
+                        display: inline-block;
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        outline: none;
+                        cursor: pointer;
                     }
                 }
             }
@@ -71,7 +80,7 @@
 
 @media (min-width: 980px) {
     #header{
-        .container{ 
+        .container{
             font-size: 16px;
             &::after{
                 content: '';
@@ -99,9 +108,14 @@
                     width: auto;
                     li{
                         float: left;
-                        padding: 0 2em 0 0;
+                        padding: 0;
+                        a{
+                            margin: 0 2em 0 0;
+                        }
                         &:nth-last-of-type(1) {
-                            padding: 0;
+                            a,button{
+                                margin: 0;
+                            }
                         }
                     }
                 }

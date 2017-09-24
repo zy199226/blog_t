@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-
+        loginDetail: false
     },
     mutations: {
         axiosLogin(state, a) {
@@ -41,7 +41,6 @@ export default new Vuex.Store({
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then((res) => {
-                console.log(res);
                 if (res.data.success) {
                     commit('axiosLogin', res.data);
                     window.location.href = './#/';
