@@ -14,7 +14,7 @@ const start = (route, handle) => {
     };
 
     http.createServer(onRequest).listen(8000);
-    console.log('Server has start!');
+    console.log(`Server ${process.pid} has start!`);
 };
 
 exports.start = start;

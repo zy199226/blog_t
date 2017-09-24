@@ -10,12 +10,12 @@ const insertData = (db, data, callback) => {
     collection.find({ username: data.username }).toArray((err, result) => {
         if (err) throw err;
         if (result[0]) {
-            dt = { success: false, err: '账号已注册' };
+            dt = { success: false, err: '用户名已被注册，请重新输入！' };
             callback(dt);
         } else {
             collection.insert(data, (err, result) => {
                 if (err) throw err;
-                dt = { uid: result.ops[0]._id, success: true };
+                dt = { uid: result.ops[0]._id, username: result.ops[0].username, success: true };
                 callback(dt);
             });
         }
@@ -28,8 +28,8 @@ const registerInsert = data => new Promise((resolve, reject) => {
         console.log('数据库已连接！');
         insertData(db, data, (dt) => {
             db.close();
-            console.log('数据库已关闭！');
             resolve(dt);
+            console.log('数据库已关闭！');
         });
     });
 });
