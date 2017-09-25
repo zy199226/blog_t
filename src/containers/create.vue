@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Mains from '../components/main/main.vue';
 import Panel from '../components/panel/panel.vue';
 import MarkDown from '../components/markdown/markdown.vue';
@@ -16,6 +17,25 @@ export default {
         Mains,
         Panel,
         MarkDown
+    },
+    methods: {
+        re() {
+            if (!this.success) {
+                window.location.href = './#/';
+            }
+        }
+    },
+    beforeMount() {
+        this.re();
+    },
+    computed: mapState({
+        success: state => state.loginDetail.success,
+        loginDetail: state => state.loginDetail
+    }),
+    watch: {
+        loginDetail() {
+            this.re();
+        }
     }
 };
 </script>

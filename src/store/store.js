@@ -12,6 +12,9 @@ export default new Vuex.Store({
     mutations: {
         axiosLogin(state, a) {
             state.loginDetail = a;
+        },
+        logout(state) {
+            state.loginDetail = {};
         }
     },
     actions: {
@@ -26,6 +29,7 @@ export default new Vuex.Store({
             }).then((res) => {
                 if (res.data.success) {
                     commit('axiosLogin', res.data);
+                    window.localStorage.setItem('uid', res.data.uid);
                     window.location.href = './#/';
                 } else {
                     alert(res.data.err);
@@ -43,10 +47,41 @@ export default new Vuex.Store({
             }).then((res) => {
                 if (res.data.success) {
                     commit('axiosLogin', res.data);
+                    window.localStorage.setItem('uid', res.data.uid);
                     window.location.href = './#/';
                 } else {
                     alert(res.data.err);
                 }
+            });
+        },
+        uidLogin({ commit }, uid) {
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/login',
+                data: `uid=${uid}`,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then((res) => {
+                if (res.data.success) {
+                    commit('axiosLogin', res.data);
+                    window.localStorage.setItem('uid', res.data.uid);
+                    window.location.href = './#/';
+                } else {
+                    alert(res.data.err);
+                }
+            });
+        },
+        axiosCreate({ state }, { title, content }) {
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/create',
+                data: `uid=${state.loginDetail.uid}&title=${title}&content=${content}`,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then((res) => {
+                console.log(res);
             });
         }
     },

@@ -14,6 +14,13 @@ export default {
     components: {
         NavBar,
         Footers
+    },
+    beforeCreate() {
+        const uid = window.localStorage.getItem('uid');
+
+        if (uid) {
+            this.$store.dispatch('uidLogin', uid);
+        }
     }
 };
 </script>

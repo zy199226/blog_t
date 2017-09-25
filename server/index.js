@@ -6,6 +6,7 @@ const router = require('./router');
 const handle = {};
 handle['/register'] = require('./requestHandlers/reg').reg;
 handle['/login'] = require('./requestHandlers/log').log;
+handle['/create'] = require('./requestHandlers/create').create;
 
 
 if (cluster.isMaster) {

@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Mains from '../components/main/main.vue';
 import Panel from '../components/panel/panel.vue';
 import Log from '../components/log/log.vue';
@@ -16,7 +17,15 @@ export default {
         Mains,
         Panel,
         Log
-    }
+    },
+    beforeMount() {
+        if (this.success) {
+            window.location.href = './#/';
+        }
+    },
+    computed: mapState({
+        success: state => state.loginDetail.success
+    })
 };
 </script>
 

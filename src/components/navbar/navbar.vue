@@ -48,7 +48,8 @@ export default {
             bus.$emit('otherH', this.slideBarHeight);
         },
         logout() {
-            console.log(this);
+            this.$store.commit('logout');
+            window.localStorage.clear();
         }
     },
     mounted() {
