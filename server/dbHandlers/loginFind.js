@@ -35,7 +35,7 @@ const findData = (db, data, callback) => {
     });
 };
 
-const loginFind = data => new Promise((resolve, reject) => {
+const loginFind = data => new Promise((resolve) => {
     MongoClient.connect(DB_CONN_STR, (err, db) => {
         if (err) throw err;
         console.log('数据库已连接！');

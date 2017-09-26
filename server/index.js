@@ -7,6 +7,8 @@ const handle = {};
 handle['/register'] = require('./requestHandlers/reg').reg;
 handle['/login'] = require('./requestHandlers/log').log;
 handle['/create'] = require('./requestHandlers/create').create;
+handle['/topic'] = require('./requestHandlers/topic').topic;
+handle['/topics'] = require('./requestHandlers/topics').topics;
 
 
 if (cluster.isMaster) {

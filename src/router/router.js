@@ -4,6 +4,7 @@ import homePage from '../containers/homePage.vue';
 import register from '../containers/register.vue';
 import login from '../containers/login.vue';
 import create from '../containers/create.vue';
+import topic from '../containers/topic.vue';
 
 Vue.use(Router);
 
@@ -21,6 +22,9 @@ export default new Router({
         }, {
             path: '/create',
             component: create
+        }, {
+            path: '/topic/:id',
+            component: topic
         }
     ]
 });

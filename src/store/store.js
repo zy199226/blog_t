@@ -7,7 +7,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        loginDetail: false
+        loginDetail: false,
+        topic: {}
     },
     mutations: {
         axiosLogin(state, a) {
@@ -15,6 +16,12 @@ export default new Vuex.Store({
         },
         logout(state) {
             state.loginDetail = {};
+        },
+        axiosTopic(state, a) {
+            state.topic = a;
+        },
+        axiosTopics(state, a) {
+            state.home = a;
         }
     },
     actions: {
@@ -65,8 +72,6 @@ export default new Vuex.Store({
             }).then((res) => {
                 if (res.data.success) {
                     commit('axiosLogin', res.data);
-                    window.localStorage.setItem('uid', res.data.uid);
-                    window.location.href = './#/';
                 } else {
                     alert(res.data.err);
                 }
@@ -81,7 +86,21 @@ export default new Vuex.Store({
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then((res) => {
-                console.log(res);
+                if (res.data.success) {
+                    window.location.href = `./#/topic/${res.data.topicID}`;
+                } else {
+                    alert('发布失败，未知错误!');
+                }
+            });
+        },
+        axiosTopic({ commit }, id) {
+            axios.get(`http://127.0.0.1:8000/topic?id=${id}`).then((res) => {
+                commit('axiosTopic', res.data);
+            });
+        },
+        axiosTopics({ commit }) {
+            axios.get('http://127.0.0.1:8000/topics').then((res) => {
+                commit('axiosTopics', res.data);
             });
         }
     },

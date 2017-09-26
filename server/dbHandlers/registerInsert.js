@@ -22,7 +22,7 @@ const insertData = (db, data, callback) => {
     });
 };
 
-const registerInsert = data => new Promise((resolve, reject) => {
+const registerInsert = data => new Promise((resolve) => {
     MongoClient.connect(DB_CONN_STR, (err, db) => {
         if (err) throw err;
         console.log('数据库已连接！');

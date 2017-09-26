@@ -15,7 +15,8 @@ const verify = (db, data) => new Promise((resolve) => {
             resolve({
                 title: data.title,
                 content: data.content,
-                username: result[0].username
+                username: result[0].username,
+                create_at: new Date()
             });
         }
     });
@@ -32,28 +33,31 @@ const updateCreate = (db, data, id) => new Promise((resolve) => {
     db.collection('author').update(
         { _id: ObjectID(data.uid) },
         { $push: { create: id } },
-        (err, result) => {
+        (err) => {
             if (err) throw err;
             resolve();
         }
     );
 });
 
-const insertData = async (db, data, callback) => {
+const insertData = async (db, data) => {
     const verifyAccount = await verify(db, data);
-    const topicId = await insertTopic(db, verifyAccount);
-    await updateCreate(db, data, topicId);
-    await callback({ a: 123 });
+    const topicID = await insertTopic(db, verifyAccount);
+    await updateCreate(db, data, topicID);
+    return {
+        success: true,
+        topicID
+    };
 };
 
 const createInsert = data => new Promise((resolve) => {
     MongoClient.connect(DB_CONN_STR, (err, db) => {
         if (err) throw err;
         console.log('数据库已连接！');
-        insertData(db, data, (result) => {
+        insertData(db, data).then((topic) => {
             db.close();
             console.log('数据库已关闭！');
-            resolve(result);
+            resolve(topic);
         });
     });
 });
