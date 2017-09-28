@@ -54,4 +54,8 @@ i {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+body{
+    background: #f4f4f4;
+}
 </style>

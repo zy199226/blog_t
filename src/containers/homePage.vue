@@ -1,12 +1,6 @@
 <template lang="html">
     <Mains>
-        <div slot="main" class="" v-for="(topic, i) of home">
-            <p :key="i">哈哈</p>
-        </div>
-        <Topics slot="main"></Topics>
-        <Topics slot="main"></Topics>
-        <Topics slot="main"></Topics>
-        <Topics slot="main"></Topics>
+        <Topics v-for="(topic, i) of home" :key="i" slot="main" :topic="topic"></Topics>
     </Mains>
 </template>
 

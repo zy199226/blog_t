@@ -1,14 +1,19 @@
 <template lang="html">
     <div class="topics">
-        <h3>哈哈</h3>
-        <time>时间：13214213</time>
-        <span>作者：呵呵</span>
-        <p>funfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfunfun</p>
+        <router-link :to="`/topic/${topic._id}`">{{topic.title}}</router-link>
+        <time>时间：{{create}}</time>
+        <span>作者：{{topic.username}}</span>
     </div>
 </template>
 
 <script>
 export default {
+    props: ['topic'],
+    computed: {
+        create() {
+            return new Date(this.topic.create_at).toLocaleDateString();
+        }
+    }
 };
 </script>
 

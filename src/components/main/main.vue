@@ -1,8 +1,6 @@
 <template lang="html">
-    <div id="main">
-        <div id="mainBox" :style="ww">
-            <slot name="main" />
-        </div>
+    <div id="main" :style="ww">
+        <slot name="main" />
     </div>
 </template>
 
