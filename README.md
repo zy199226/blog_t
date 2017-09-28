@@ -21,7 +21,11 @@
 
 ## 预览
 因为要忙其他的事情，暂时没空搞服务器的事情，所以暂时也没有预览，之后有空了应该会补上！先看图片吧
-![]()
+![](https://github.com/zy199226/blog_t/blob/master/dist/1.png)
+![](https://github.com/zy199226/blog_t/blob/master/dist/2.png)
+![](https://github.com/zy199226/blog_t/blob/master/dist/3.png)
+![](https://github.com/zy199226/blog_t/blob/master/dist/4.png)
+![](https://github.com/zy199226/blog_t/blob/master/dist/5.png)
 
 
 ## 运行项目
